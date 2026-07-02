@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific (AskMyBook)
+# chroma_db/ = local vector database, regenerable via src/ingest.py
+chroma_db/
+# source textbook(s) — linked in README instead of committed
+data/raw/*.pdf
