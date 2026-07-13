@@ -1,6 +1,6 @@
 # AskMyBook — Design Doc (1 page)
 
-- **Author:** `<Your Name>`
+- **Author:** Mechapaia Shilla
 - **Segment:** Foundations of Applied Machine Learning
 - **Problem statement:** I2 — Document Q&A (RAG)
 - **Date:** 3 July 2026 (Week 1)

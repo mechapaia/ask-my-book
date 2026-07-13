@@ -4,14 +4,14 @@
 
 - **Segment:** Foundations of Applied Machine Learning
 - **Problem statement:** I2 — Document Q&A (RAG)
-- **Author:** `<Your Name>`
-- **Status:** 🚧 Week 1 — data layer working (ingestion + retrieval). Generation, web UI, and deployment coming in Weeks 2–4.
+- **Author:** Mechapaia Shilla
+- **Status:** 🚧 In progress — end-to-end Q&A works from the command line (retrieval + LLM answers with page citations). Web UI and deployment are next.
 
 ---
 
 ## Demo
 
-> _Coming in Week 4:_ Loom walkthrough + live deployed URL will be linked here.
+> _Coming soon:_ Loom walkthrough + live deployed URL will be linked here.
 >
 > For now, see [What works today](#what-works-today) for a terminal demo of retrieval.
 
@@ -54,8 +54,8 @@ textbook *Principles of Data Science*.
                                               ▼
                              ┌──────────────────────────────┐
                              │ Relevant chunks + page numbers│
-                             │  → (Week 2) LLM answer w/      │
-                             │     inline citations (Groq)    │
+                             │  → LLM answer w/ inline        │
+                             │     page citations (Groq)      │
                              └──────────────────────────────┘
 ```
 
@@ -72,9 +72,9 @@ _A polished architecture diagram (PNG) will be added for Milestone 1._
 | Chunking         | LangChain `RecursiveCharacterTextSplitter` | Sensible overlapping chunks |
 | Embeddings       | `sentence-transformers` + `BAAI/bge-small-en-v1.5` | Free, local, CPU-friendly, strong quality |
 | Vector database  | ChromaDB (persistent, local)             | Zero infra, built-in metadata filtering |
-| Generation _(Week 2)_ | Groq API (Llama 3.x, free tier)     | Free, fast, and works when deployed |
-| Web UI _(Week 2)_ | Streamlit                               | Simple, deployable on a free tier |
-| Deployment _(Week 4)_ | Streamlit Community Cloud            | Free hosting connected to GitHub |
+| Generation       | Groq API (Llama 3.3, free tier)          | Free, fast, and works when deployed |
+| Web UI _(next)_  | Streamlit                                | Simple, deployable on a free tier |
+| Deployment _(planned)_ | Streamlit Community Cloud           | Free hosting connected to GitHub |
 
 ---
 
@@ -104,14 +104,20 @@ pip install -r requirements.txt
    ```bash
    python src/ingest.py
    ```
-3. Ask a question:
+3. Add your Groq API key (free from https://console.groq.com) — copy the example
+   env file and paste your key into it:
    ```bash
-   python src/retrieve.py "What is overfitting in machine learning?"
+   cp .env.example .env    # then edit .env and set GROQ_API_KEY=...
    ```
-   You'll get the most relevant passages, each with its page number.
+4. Ask a question and get a cited answer:
+   ```bash
+   python src/generate.py "What is overfitting in machine learning?"
+   ```
+   (To see just the raw retrieved passages without the LLM, use
+   `python src/retrieve.py "..."` instead.)
 
 ### Test
-> _Coming in Week 3:_ a small test suite (`pytest`). For now, verification is
+> _Coming soon:_ a small test suite (`pytest`). For now, verification is
 > manual — see [What works today](#what-works-today).
 
 ---
@@ -126,12 +132,12 @@ pip install -r requirements.txt
 
 ## ADRs (Architecture Decision Records)
 
-> _Coming in Week 2:_ ADRs documenting the key choices (embedding model, vector
+> _Coming soon:_ ADRs documenting the key choices (embedding model, vector
 > DB, and generation model) will live in [`docs/adr/`](docs/adr/).
 
 ---
 
-## Mini-extension (planned, Week 3)
+## Mini-extension (planned)
 
 **"Compare Two Documents":** upload two PDFs (e.g. two versions of a syllabus or
 two papers) and ask *"what's different between these on topic X?"*. The system
@@ -143,15 +149,14 @@ retrieves from both and answers with a comparison.
 
 ## Known limitations
 
-- **Retrieval only, for now** — the LLM answer layer (generation) is not wired up
-  yet; the tool currently returns relevant passages, not a synthesized answer.
-- **Dense retrieval only** — keyword (BM25) hybrid retrieval is planned for Week 2.
+- **Command line only, for now** — a Streamlit web UI is the next step.
+- **Dense retrieval only** — keyword (BM25) hybrid retrieval is planned next.
 - **Text PDFs only** — scanned/image PDFs won't work without OCR.
 - **Single corpus** — one textbook at a time until the mini-extension lands.
 
 ---
 
-## What I learned this week
+## What I learned
 
 - **Embeddings turn meaning into geometry** — similar ideas end up as nearby
   vectors, which is what lets "search by meaning" beat keyword search.
@@ -159,14 +164,23 @@ retrieves from both and answers with a comparison.
   overlap directly affect answer quality.
 - **`.gitignore` is a safety tool, not just tidiness** — it's what keeps API keys
   (`.env`) and large files (the PDF, the vector DB) out of a public repo.
-- _(add 1–2 of your own here — e.g. something that surprised you about ChromaDB
-  or PyMuPDF)_
+- **Retrieval and generation are two separate jobs** — the retriever just finds
+  relevant passages; a language model then writes the answer from them. Seeing
+  the raw chunks (`retrieve.py`) before the polished answer (`generate.py`) made
+  the whole RAG idea click for me.
+- **A RAG answer is only as good as the prompt around it** — telling the model to
+  answer *only* from the provided pages and to say "I don't know" otherwise is
+  what stops it from making things up. That one instruction is the difference
+  between a demo and something you can trust.
+- **You don't need paid/heavy tools to build this** — a small local embedding
+  model (BGE) plus a free API (Groq) runs the entire pipeline on my laptop at no
+  cost.
 
 ---
 
 ## What I'd do in 3rd year
 
-> _Coming in Week 4:_ see `docs/roadmap_3rd_year.md`. The short version: grow this
+> _Coming soon:_ see `docs/roadmap_3rd_year.md`. The short version: grow this
 > from a single-textbook tool into a multi-source, evaluated, deployed system —
 > the seed of a 3rd-year "enterprise RAG" project.
 
@@ -182,8 +196,8 @@ retrieves from both and answers with a comparison.
 
 ## What works today
 
-Running `python src/retrieve.py "how does linear regression work"` against the
-ingested textbook (1,887 chunks) returns the top matching passages with page
-numbers — e.g. results from pages 204, 206, and 303, all genuinely about linear
-regression. This confirms the ingestion → embedding → retrieval pipeline is
-working end to end.
+Running `python src/generate.py "how does linear regression work"` against the
+ingested textbook (1,887 chunks) returns a written answer grounded in the book,
+with page-number citations (e.g. `[p. 204]`) you can verify. The full pipeline —
+PDF → chunks → embeddings → retrieval → cited answer — works end to end from the
+command line.
