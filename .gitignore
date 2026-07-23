@@ -222,3 +222,5 @@ __marimo__/
 chroma_db/
 # source textbook(s) — linked in README instead of committed
 data/raw/*.pdf
+data/eval_results.json
+

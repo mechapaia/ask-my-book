@@ -1,0 +1,163 @@
+[
+  {
+    "id": 1,
+    "question": "What are the six phases of the CRISP-DM lifecycle?",
+    "ground_truth_pages": [38, 39, 40],
+    "key_facts": ["Business Understanding", "Data Understanding", "Data Preparation", "Modeling", "Evaluation", "Deployment"],
+    "out_of_scope": false
+  },
+  {
+    "id": 2,
+    "question": "What is the difference between quantitative and qualitative data?",
+    "ground_truth_pages": [78, 79, 80],
+    "key_facts": ["numerical", "categorical", "measured", "described"],
+    "out_of_scope": false
+  },
+  {
+    "id": 3,
+    "question": "How do discrete and continuous variables differ?",
+    "ground_truth_pages": [86, 87],
+    "key_facts": ["countable", "infinite", "measured", "gaps"],
+    "out_of_scope": false
+  },
+  {
+    "id": 4,
+    "question": "What is the distinction between structured and unstructured data?",
+    "ground_truth_pages": [93, 94],
+    "key_facts": ["organized", "schema", "database", "free-form", "predefined"],
+    "out_of_scope": false
+  },
+  {
+    "id": 5,
+    "question": "What is the difference between primary and secondary data sources?",
+    "ground_truth_pages": [101, 102],
+    "key_facts": ["first-hand", "already exists", "original researcher", "previously collected"],
+    "out_of_scope": false
+  },
+  {
+    "id": 6,
+    "question": "What are the key considerations in data ethics, privacy, and bias?",
+    "ground_truth_pages": [119, 120, 121],
+    "key_facts": ["consent", "bias", "fairness", "transparency", "confidentiality"],
+    "out_of_scope": false
+  },
+  {
+    "id": 7,
+    "question": "What is a synthetic dataset and why is it used?",
+    "ground_truth_pages": [127, 128],
+    "key_facts": ["artificially generated", "privacy", "testing", "simulate real data"],
+    "out_of_scope": false
+  },
+  {
+    "id": 8,
+    "question": "What are the main measures of central tendency?",
+    "ground_truth_pages": [210, 211],
+    "key_facts": ["mean", "median", "mode", "average", "middle", "frequent"],
+    "out_of_scope": false
+  },
+  {
+    "id": 9,
+    "question": "What are the common measures of variability in statistics?",
+    "ground_truth_pages": [216, 217],
+    "key_facts": ["range", "variance", "standard deviation", "spread"],
+    "out_of_scope": false
+  },
+  {
+    "id": 10,
+    "question": "What are the characteristics of distribution shapes like skewness and kurtosis?",
+    "ground_truth_pages": [228, 229],
+    "key_facts": ["skewness", "kurtosis", "symmetric", "peakedness", "tail"],
+    "out_of_scope": false
+  },
+  {
+    "id": 11,
+    "question": "What are the core principles of effective data visualization?",
+    "ground_truth_pages": [259, 260],
+    "key_facts": ["clarity", "simplicity", "accuracy", "audience"],
+    "out_of_scope": false
+  },
+  {
+    "id": 12,
+    "question": "What are dashboard design layout principles?",
+    "ground_truth_pages": [284, 285],
+    "key_facts": ["hierarchy", "grid", "minimalism", "key performance indicators", "KPIs"],
+    "out_of_scope": false
+  },
+  {
+    "id": 13,
+    "question": "When should you use a t-test and what does it compare?",
+    "ground_truth_pages": [305, 306],
+    "key_facts": ["compare means", "two groups", "statistically significant"],
+    "out_of_scope": false
+  },
+  {
+    "id": 14,
+    "question": "What does correlation analysis measure?",
+    "ground_truth_pages": [312, 313],
+    "key_facts": ["strength and direction", "linear relationship", "two variables", "coefficient"],
+    "out_of_scope": false
+  },
+  {
+    "id": 15,
+    "question": "How does simple linear regression and prediction modeling work?",
+    "ground_truth_pages": [318, 319, 320],
+    "key_facts": ["predict", "independent", "dependent", "line of best fit", "slope", "intercept"],
+    "out_of_scope": false
+  },
+  {
+    "id": 16,
+    "question": "What is KNIME and how does its workflow interface work?",
+    "ground_truth_pages": [348, 349],
+    "key_facts": ["visual workflow", "nodes", "connections", "pipelining"],
+    "out_of_scope": false
+  },
+  {
+    "id": 17,
+    "question": "What are the benefits of automating data workflows?",
+    "ground_truth_pages": [341, 342],
+    "key_facts": ["reproducibility", "efficiency", "error reduction", "consistency"],
+    "out_of_scope": false
+  },
+  {
+    "id": 18,
+    "question": "What is reproducible research and why does it matter in data workflows?",
+    "ground_truth_pages": [376, 377],
+    "key_facts": ["replicate results", "same data", "transparency", "scientific integrity"],
+    "out_of_scope": false
+  },
+  {
+    "id": 19,
+    "question": "What should be included in an executive summary for data reports?",
+    "ground_truth_pages": [392, 393],
+    "key_facts": ["key findings", "recommendations", "non-technical", "brief overview"],
+    "out_of_scope": false
+  },
+  {
+    "id": 20,
+    "question": "What are the elements of compelling data storytelling?",
+    "ground_truth_pages": [405, 406],
+    "key_facts": ["narrative", "visuals", "data", "context", "action"],
+    "out_of_scope": false
+  },
+  {
+    "id": 21,
+    "question": "How do you bake a classic chocolate chip cookie?",
+    "ground_truth_pages": [],
+    "key_facts": ["I don't know based on this textbook."],
+    "out_of_scope": true
+  },
+  {
+    "id": 22,
+    "question": "What are the rules of playing professional baseball?",
+    "ground_truth_pages": [],
+    "key_facts": ["I don't know based on this textbook."],
+    "out_of_scope": true
+  },
+  {
+    "id": 23,
+    "question": "Explain how to design and build a nuclear fission reactor from scratch.",
+    "ground_truth_pages": [],
+    "key_facts": ["I don't know based on this textbook."],
+    "out_of_scope": true
+  }
+]

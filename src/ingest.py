@@ -8,7 +8,7 @@ from sentence_transformers import SentenceTransformer
 import chromadb
 
 # --- Config ---
-PDF_PATH = "data/raw/Principles-of-Data-Science-WEB.pdf"
+PDF_PATH = "data/raw/Introduction-to-Data-Science-1758198551._print.pdf"
 DB_PATH = "chroma_db"
 COLLECTION_NAME = "textbook"
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
